@@ -179,6 +179,12 @@ Getwid plugin is distributed under the terms of the GNU GPL.
 
 == Changelog ==
 
+= 1.7.4, Jul 31 2021 =
+* Fixed an issue with YouTube video in the Section block.
+
+= 1.7.3, Jul 30 2021 =
+* Revert changes in version 1.7.2.
+
 = 1.7.2, Jul 29 2021 =
 * Improved compatibility with WordPress 5.8.
 * Added the ability to use post template parts and ACF template parts in the Query Loop Block.

@@ -39,28 +39,31 @@ class BlocksManager {
 			)
 		);
 
-		//Add Getwid post-block category
-		$block_categories = array_merge(
-			$block_categories,
-			array(
-				array(
-					'slug' => 'getwid-post-blocks',
-					'title' => __( 'Getwid Post Blocks', 'getwid' ),
-				),
-			)
-		);
-
-		//Add Getwid acf-post-block category
-		if ( getwid_acf_is_active() ) {
+		//Add Getwid post-block category (Only on Templates page)
+		if ( ! empty( $editor_context->post ) && ( $editor_context->post->post_type == getwid()->postTemplatePart()->postType ) ) {
 			$block_categories = array_merge(
 				$block_categories,
 				array(
 					array(
-						'slug' => 'getwid-acf-blocks',
-						'title' => __( 'Getwid ACF Blocks', 'getwid' ),
+						'slug' => 'getwid-post-blocks',
+						'title' => __( 'Getwid Post Blocks', 'getwid' ),
 					),
 				)
 			);
+		}
+
+		if ( getwid_acf_is_active() ) {
+			if ( ! empty( $editor_context->post ) && ( $editor_context->post->post_type == getwid()->postTemplatePart()->postType ) ) {
+				$block_categories = array_merge(
+					$block_categories,
+					array(
+						array(
+							'slug' => 'getwid-acf-blocks',
+							'title' => __( 'Getwid ACF Blocks', 'getwid' ),
+						),
+					)
+				);
+			}
 		}
 
 		return $block_categories;
